@@ -2,8 +2,9 @@
 import javax.lang.model.element.Name;
 
 //import java.util.AbstractList;
-//import java.util.ArrayList;
+import java.util.HashMap;// Warenkorbregister
 import java.util.Scanner;
+import java.util.Map;
 
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
@@ -16,20 +17,28 @@ public class testmain {
         String Name;// Muss evtl. in einer anderen Klasse dkleariert werden
         int Kundenmenu = 0, Adminmenu =0;//
         boolean menu = true;
-        //int Kundenmenu = 0; // Steuert mitels switch case das Kundenmenü
         boolean end = true; // Beendet die whileschleifen der Steuerungslogik
+        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+        Map  Register = new HashMap<>(); // Warenkorbregister
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
         Scanner input = new Scanner(System.in); // Benutzereingabe --> Menüführung in der switch case logic
         Scanner delete = new Scanner(System.in); // --> Um über den Index Artikel zu löschen
         Scanner kunde = new Scanner(System.in);
         /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-        // Loginmenü
+        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
+        // Loginmenü Programmstart
         System.out.println("Herzlich Willkommen in deinem Lebensmittel Online Shop\nWie lautet dein Name:  ");
 
-        // Provisorisches Angebotskonstruckt --> aktuelle Baustelle
-        // Festes Sortiment
         Angebot Sortiment = new Angebot(); // Festes Angebot wir erstellt
+
         Name = input.nextLine();
+        /********************************Erstellt Warenkorbregister******************************************/
+        Warenkorb warenkorb = Warenkorb.erstelleWarenkorb(Name);
+        Register.put(Name,warenkorb);
         /**********************************************Admin-Menü*******************************************/
         if(Name.equals("ShopAdmin")){
             while(end) {
@@ -105,21 +114,23 @@ public class testmain {
         /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
         System.out.println("Hallo " + Name + " wir haben heute tolle Produkte in unserem Angebot für dich.");
-        Warenkorb warenkorb = Warenkorb.erstelleWarenkorb(Name);
+
+
         System.out.println("Das Tagesangebot ");
         Sortiment.showAngebot();
         /* ++++++++++++++++++++++++++++++++++++++++++++++Kunden-Menü+++++++++++++++++++++++++++++++++++++++++*/
+        /*++++++++++++++++++++++++++++++++++++++++++++++++Einkaufsmenü+++++++++++++++++++++++++++++++++++++++*/
         while(end){
             switch(Kundenmenu){
                 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                 case 0: //Hauptmenü
-                    System.out.println("________________Hauptmenü_________________\n");
+                    System.out.println("________________Hauptmenü__"+Name+"_______________\n");
                     System.out.println("Artikel dem Warenkorb hinzufügen (1)"); //erledigt
                     System.out.println("Artikel aus dem Warenkorb entfernen (2)");//erledigt
                     System.out.println("Angebot anzeigen (3)");//erledigt
                     System.out.println("Warenkorb anzeigen (4)");//
                     System.out.println("Gesamtpreis Netto berechnen (5)");
-                    System.out.println("Zusätzlichen Warenkorb anlegen (6)");
+                    System.out.println("Warenkorb wechseln (6)");
                     System.out.println("Zur Kasse (7)");
                     Kundenmenu= input.nextInt();
                     break;
@@ -134,7 +145,7 @@ public class testmain {
                     int hinzufügen = kunde.nextInt();
 
                     warenkorb.addArtikel(Sortiment.findArtikel(index));
-
+                    System.out.println("Artikel wurde hinzugefügt");
                     System.out.println("Weitere Artikel hinzufügen ja (1)");
                     System.out.println("Artikel aus dem Warenkorb entfernen (2)");
                     System.out.println("Warenkorb anzeigen (4)");
@@ -186,6 +197,7 @@ public class testmain {
 
                 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                 case 6:
+
                     System.out.println("Neuer Warenkorb");
                     System.out.println("Kundenname ?");
 
@@ -207,7 +219,7 @@ public class testmain {
                     break;
             }
         }
-
+        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 
 
