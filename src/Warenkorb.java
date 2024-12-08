@@ -3,18 +3,22 @@ import java.util.Scanner;
 
 public class Warenkorb {
 
+    ;
     private ArrayList<Artikel> artikelListe;
     private String kunde;
 
     public Warenkorb(String kunde, ArrayList<Artikel> artikelListe) {
         this.kunde = kunde;
         this.artikelListe = artikelListe;
+
+
     }
 
     /*++++++++++++++++++++++++++++++++++++++++++MK-000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public static Warenkorb erstelleWarenkorb(String kunde) {
         ArrayList<Artikel> artikelListe = new ArrayList<>();
         Warenkorb warenkorb = new Warenkorb(kunde, artikelListe);
+
         return warenkorb;
     }
 
@@ -86,14 +90,10 @@ public class Warenkorb {
         return Gesamtpreis;
     }
 
-
-
-
-
-
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void testeListe(){ //Testfunktioniert
-        if(artikelListe.isEmpty()){
+
+         if(artikelListe.isEmpty()){
             //System.out.println(getArtikelListe()); // Methode wird theoretisch nicht benötigt
             System.out.println(artikelListe.size()+"Keine Artikel in dem "+kunde+" Warenkorb");
         }else{
