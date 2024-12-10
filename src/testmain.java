@@ -19,7 +19,7 @@ public class testmain {
 
 
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-        Map<String, Warenkorb> Register = new HashMap<>(); // Warenkorbregister <Name , artikelliste>
+        //Map<String, Warenkorb> Register = new HashMap<>(); // Warenkorbregister <Name , artikelliste>
 
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
         Scanner input = new Scanner(System.in); // Benutzereingabe --> Menüführung in der switch case logic
@@ -27,15 +27,12 @@ public class testmain {
         Scanner kunde = new Scanner(System.in);
         /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-
         // Loginmenü Programmstart
 
         /************************************Artikel Sortiment wird instanziiert***************************** */
         Angebot Sortiment = new Angebot(); // Festes Angebot wir erstellt
         System.out.println("Herzlich Willkommen in deinem Lebensmittel Online Shop\nName:  ");
         Name = input.nextLine();
-
 
         /* +++++++++++++++++++++++++++++++++++++Admin-Menu++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
         if (Name.equals("ShopAdmin")) {
@@ -110,52 +107,13 @@ public class testmain {
 
         Warenkorb warenkorb = Warenkorb.erstelleWarenkorb(Name);
         Register register= Register.erstelleRegister(Name,warenkorb);
-        Register.put(Name, warenkorb);
+        register.addKunde(Name, warenkorb);
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-        /*Baustelle 08.12.2024
-        * folgende Infos stehen mir zur verfügung
-        * Fehlermeldung 1: Cannot resolve method 'erstelleRegister' in 'Map'
 
-           Diese Fehlermeldung besagt, dass die Methode erstelleRegister nicht in der Map-Klasse existiert. Das ist logisch, da erstelleRegister eine statische Methode deiner Register-Klasse ist und nicht mit der Map-Klasse verbunden ist.
-            Fehlermeldung 2: 'get(java.lang.Object)' in 'java.util.Map' cannot be applied to '()'
-
-        Diese Fehlermeldung tritt auf, weil du versuchst, die get-Methode der Map ohne einen Schlüssel aufzurufen. Die get-Methode erwartet einen Schlüssel, um den entsprechenden Wert zurückzugeben.
-            Lösungsschritte
-
-        Korrekte Verwendung von erstelleRegister:
-            Da erstelleRegister eine statische Methode deiner Register-Klasse ist, musst du sie über den Klassennamen aufrufen und nicht über eine Instanz einer Map.
-            Die Methode erstelleRegister erstellt bereits ein neues Register-Objekt, daher musst du den Rückgabewert dieser Methode verwenden.
-
-        Korrekte Verwendung von put und get:
-            Um einen Eintrag in die Map hinzuzufügen, verwendest du die put-Methode, wobei der erste Parameter der Schlüssel (in deinem Fall der Name) und der zweite Parameter der Wert (der Warenkorb) ist.
-            Um einen Wert aus der Map abzurufen, verwendest du die get-Methode und übergibst den entsprechenden Schlüssel.
-
-        Korrigierte Erstellung des Warenkorbs und Registers
-        Warenkorb warenkorb = Warenkorb.erstelleWarenkorb(Name);
-        Register register = Register.erstelleRegister();
-        register.addKunde(Name, warenkorb);*/
 
         /*+++++++++++++++++++++++++++++Gastwarenkorb++++++++MK000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-        System.out.println("weiteren Gastwarenkorb einrichten ?  1");
-        int ja = input.nextInt();
-        if (ja == 1) {
-            int gastkonto=1;
-            while (gastkonto==1) {
 
-                        System.out.println("Gastname:");
-                        Scanner scan = new Scanner(System.in);
-                        String name = scan.nextLine();
-                        Warenkorb Gast = Warenkorb.erstelleWarenkorb(name);
-                        Register.put(name, Gast);
-                        Register.get(name);
-                        System.out.println(name + " Wurde angelegt");
-                        System.out.println("____________________________________");
-                        System.out.println("Weiteren Gast-Warenkorb anlegen (1)");
-                        System.out.println("Ende (2)");
-                        gastkonto = input.nextInt();
-            }
-            System.out.println("Alle warenkörbe angelegt");
-        }
+
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
@@ -166,44 +124,54 @@ public class testmain {
                 switch (Kundenmenu) {
                     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                     case 0: //Hauptmenü
-                        System.out.println("________________Hauptmenü__" + Name + "_______________\n");
+                        System.out.println("________________Hauptmenü_________________\n");
                         System.out.println("Artikel dem Warenkorb hinzufügen (1)"); //erledigt
                         System.out.println("Artikel aus dem Warenkorb entfernen (2)");//erledigt
                         System.out.println("Angebot anzeigen (3)");//erledigt
                         System.out.println("Warenkorb anzeigen (4)");//
                         System.out.println("Gesamtpreis Netto berechnen (5)");
-                        // System.out.println("Warenkorb wechseln (6)");
+                        System.out.println("Weiteren Gast-Warenkorb einrichten  (6)");
                         System.out.println("Zur Kasse (7)");
                         Kundenmenu = input.nextInt();
                         break;
                     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                     case 1: // Implementiert eine Suchfunktion Anhand eines Indexes
+
                         System.out.println("Artikel hinzufügen");
                         System.out.println("___________________");
                         System.out.println("Index ");
                         int index = kunde.nextInt();
                         Sortiment.findArtikel(index);
-                        System.out.println("Artikel hinzufügen ? (1)");
-                        int hinzufügen = kunde.nextInt();
+                        // Zugriff auf die einzelnen Warenkörbe
+                        Scanner temp = new Scanner(System.in);
+                        System.out.println("In welchen Warenkorb soll der Artikel hinzugefügt werden ?");
+                        System.out.println(register.getWarenkorb(Name));
+                        String name = temp.nextLine();
+                        register.addArtikelZuWarenkorb(name,Sortiment.findArtikel(index));
+                        //warenkorb.addArtikel(Sortiment.findArtikel(index));
 
-                        //Register.get(warenkorb.addArtikel(Sortiment.findArtikel(index)));
-                        warenkorb.addArtikel(Sortiment.findArtikel(index));
+
                         System.out.println("Artikel wurde hinzugefügt");
                         System.out.println("Weitere Artikel hinzufügen ja (1)");
                         System.out.println("Artikel aus dem Warenkorb entfernen (2)");
                         System.out.println("Warenkorb anzeigen (4)");
                         System.out.println("Hauptmenü (0)");
+
                         Kundenmenu = input.nextInt();
                         break;
                     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                     case 2: // Artikel aus dem Warenkorb entfernen
 
                         System.out.println("Artikel entfernen");
+                        System.out.println("Auf welchen Warenkorb soll zugegriffen werden ?");
+                        Scanner temp2=new Scanner(System.in);
+                        String name2 = temp2.nextLine(); // Variablen Überladung ?
                         System.out.println("Welcher Artikel soll entfernt werden ?\nGib die ArtikelNr an");
                         warenkorb.showWarenkorb();
 
-                        int antwort = kunde.nextInt();
-                        warenkorb.removeArtikel(antwort);
+                        int artikelNr = kunde.nextInt();
+                        register.removeArtikelZuWarenkorb(name2,artikelNr);
+                        //warenkorb.removeArtikel(antwort);
 
                         System.out.println("Hauptmenü (0)");
                         Kundenmenu = input.nextInt();
@@ -221,12 +189,14 @@ public class testmain {
                     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                     case 4:// Beinhaltet die Artikelausgabe(Eigenschaften) und der Anzahl der Artikel(Einkaufsliste.size)
                         System.out.println("Warenkorbanzeigen");
+                        //System.out.println(register.showRegister());
+                        ; // Testen !!!
                         //warenkorb.getArtikelListe();
-                        System.out.println(Register.get(Name));
+
                         //warenkorb.showWarenkorb();
                         warenkorb.testeListe();
 
-                        System.out.println(Register.get());
+                        //System.out.println(Register.get());
 
                         System.out.println("Hauptmenü (0)");
                         Kundenmenu = input.nextInt();
@@ -241,13 +211,19 @@ public class testmain {
                         Kundenmenu = input.nextInt();
                         break;
 
-                    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                    /*+++++++++++++++++++++++++++++Gastwarenkorb++++++++MK000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                     case 6:
 
                         System.out.println("Neuer Warenkorb");
-                        System.out.println("Kundenname ?");
-
-
+                        System.out.println("_____________________");
+                        System.out.println("Gastname:");
+                        Scanner scan1 = new Scanner(System.in);
+                        String gast = scan1.nextLine();
+                        Warenkorb Gast = Warenkorb.erstelleWarenkorb(gast);
+                        register.addKunde(gast, Gast);
+                        System.out.println(gast + " Wurde angelegt");
+                        System.out.println("____________________________________");
+                        System.out.println("Weiteren Gast-Warenkorb anlegen (6)");
                         System.out.println("Hauptmenü (0)");
                         Kundenmenu = input.nextInt();
                         break;
@@ -265,6 +241,8 @@ public class testmain {
 
                 }
             }// Ende while(Programm)
+
+
     }   /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 }
 

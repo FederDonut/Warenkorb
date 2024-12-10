@@ -22,6 +22,7 @@ public class Warenkorb {
         return warenkorb;
     }
 
+
     /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public String getKunde() {
         return kunde;
@@ -33,7 +34,7 @@ public class Warenkorb {
 
     /*++++++++++++++++++++++++++++++++++++++++++MK-000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void addArtikel(Artikel artikel) {
-        System.out.println("Artikel hinzufügen ? 1(Ja)");
+        //System.out.println("Artikel hinzufügen ? 1(Ja)");
         artikelListe.add(artikel);
     }
 
