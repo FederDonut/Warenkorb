@@ -27,17 +27,15 @@ public class Warenkorb {
     public String getKunde() {
         return kunde;
     }
-
+    /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public ArrayList<Artikel> getArtikelListe() {
         return artikelListe;
     }
-
     /*++++++++++++++++++++++++++++++++++++++++++MK-000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void addArtikel(Artikel artikel) {
         //System.out.println("Artikel hinzufügen ? 1(Ja)");
         artikelListe.add(artikel);
     }
-
     /*++++++++++++++++++++++++++++++++++++++++++******+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     /*++++++++++++++++++++++++++++++++++++++++++MK-000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void removeArtikel(int artikelNr) {
@@ -46,14 +44,10 @@ public class Warenkorb {
             if (artikelListe.get(i).getArtikelNr() == artikelNr) { // Dieser Syntax funktioniert, da ich auf die Methode des Artikels zugreife.
                 System.out.println("Artikel gefunden " + artikelListe.get(i).getArtikelNr());
                 System.out.println(artikelListe.get(i).getBeschreibung());
-                System.out.println("Artikel entfernen ? Ja (1)");
+                System.out.println("Artikel entfernen ? Ja (1) Abbrechen(2-9)");
                 int choose = remove.nextInt();
                 if (choose == 1) {
                     artikelListe.remove(i);
-                    /*
-                    * Fehlerkontrolle:
-                    * Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Artikel.getBeschreibung()" because "artikel" is null*/
-                    //artikelListe.remove(artikelListe.indexOf(i));
                     System.out.println("Artikel entfernt");
                     return;
                 } else {
@@ -92,7 +86,7 @@ public class Warenkorb {
     }
 
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    public void testeListe(){ //Testfunktioniert
+    public void countArtikel(){ //Testfunktioniert
 
          if(artikelListe.isEmpty()){
             //System.out.println(getArtikelListe()); // Methode wird theoretisch nicht benötigt
