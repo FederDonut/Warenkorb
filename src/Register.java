@@ -39,18 +39,25 @@ public class Register {
         Warenkorb warenkorb = getWarenkorb(Name); // Zugriff auf den Warenkorb in der Map
         if (warenkorb != null) {
             warenkorb.addArtikel(artikel); // Fügt den Artikel hinzu
+            System.out.println("_________________________________________________");
             System.out.println("Artikel wurde in "+Name+"'s Warenkorb hinzugefügt");
+            System.out.println("_________________________________________________");
         } else {
-            System.out.println("Kunde nicht gefunden.");
+            System.out.println("_________________________________________");
+            System.out.println("Kunde nicht gefunden");
+            System.out.println("_________________________________________");
+
         }
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    public void removeArtikelZuWarenkorb(String Name, int artikelNr) {
+    public void  removeArtikelZuWarenkorb(String Name, int artikelNr) {
         Warenkorb warenkorb = getWarenkorb(Name);
         if (warenkorb != null) {
             warenkorb.removeArtikel(artikelNr);
         } else {
-            System.out.println("Kunde nicht gefunden ");
+            System.out.println("_________________________________________");
+            System.out.println("Kunde nicht gefunden");
+            System.out.println("_________________________________________");
         }
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -60,28 +67,40 @@ public class Register {
             warenkorb.showWarenkorb();
             warenkorb.countArtikel();
         }else{
-            System.out.println("Kunde nicht gefunden");
+            System.out.println("_________________________________________");
+            System.out.println("Kunde nicht gefunden ");
+            System.out.println("_________________________________________");
+
         }
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void berechneGesamtpreisZuWarenkorb(String Name){
         Warenkorb warenkorb= getWarenkorb(Name);
         if(warenkorb != null){
-            System.out.println("Gesamtpreis: "+warenkorb.berechneGesamtpreis()+" "+Name);
-
+            System.out.println("Bruttopreis: "+warenkorb.berechneBruttopreis()+" "+Name);
+            System.out.println("Nettopreis: "+warenkorb.berechneNettopreis()+" "+Name);
         }else{
-            System.out.println("Kunde nicht gefunden. ");
+            System.out.println("_________________________________________");
+            System.out.println("Kunde nicht gefunden");
+            System.out.println("_________________________________________");
         }
     }
     /*++++++++++++++++++++++++++++++++++++++++++MK000++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    //funktioniert
     public void zurkasse(){
         // Gib die Namen der Map aus
         for (String Name : register.keySet()) {
-            System.out.println(Name);
+
+            System.out.println("+\n+");
+            System.out.println("---------------"+Name+"----------------------------");
             Warenkorb warenkorb =getWarenkorb(Name);
-            warenkorb.showWarenkorb();
+            //warenkorb.showWarenkorb();
             warenkorb.countArtikel();
-            warenkorb.berechneGesamtpreis();
+            System.out.println(Name+" Netto: "+warenkorb.berechneBruttopreis()+" €");
+            System.out.println(Name+" Brutto: "+warenkorb.berechneNettopreis()+" €");
+            System.out.println("+\n+");
+
+
         }
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/

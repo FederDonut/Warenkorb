@@ -36,7 +36,6 @@ public class Warenkorb {
         //System.out.println("Artikel hinzufügen ? 1(Ja)");
         artikelListe.add(artikel);
     }
-    /*++++++++++++++++++++++++++++++++++++++++++******+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     /*++++++++++++++++++++++++++++++++++++++++++MK-000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void removeArtikel(int artikelNr) {
         Scanner remove = new Scanner(System.in);
@@ -58,8 +57,6 @@ public class Warenkorb {
         }
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void showWarenkorb() {
 
         for (Artikel artikel : artikelListe) {
@@ -73,24 +70,30 @@ public class Warenkorb {
 
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-    public double berechneGesamtpreis(){
-        double Gesamtpreis =0;
+    public double berechneNettopreis(){
+        double Netto = 0;
+        for(Artikel artikel:artikelListe){
+            Netto=Netto+ artikel.getBrutto();
+        }
+        return Netto;
+    }
+    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    public double berechneBruttopreis(){
+        double Brutto= 0;
         System.out.println("----------------Gesamtpreis(inkl. Mwst 19%)------------------------");
         for(Artikel artikel:artikelListe){
             System.out.println("Artikel: "+ artikel.getBeschreibung()+"  Artikelpreis: "+artikel.getBrutto());
-            Gesamtpreis=Gesamtpreis+artikel.getBrutto()*1.19;
+            Brutto=Brutto+artikel.getBrutto()*1.19;
         }
         System.out.println("-------------------------------------------------------------------");
-        return Gesamtpreis;
+        return Brutto;
     }
-
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void countArtikel(){ //Testfunktioniert
 
          if(artikelListe.isEmpty()){
             //System.out.println(getArtikelListe()); // Methode wird theoretisch nicht benötigt
-            System.out.println(artikelListe.size()+"Keine Artikel in dem "+kunde+" Warenkorb");
+            System.out.println(artikelListe.size()+" Es befinden sich keine Artikel in "+kunde+" Warenkorb");
         }else{
             System.out.println( artikelListe.size()+" Artikel befindet sich in "+kunde+"s Warenkorb");
         }
