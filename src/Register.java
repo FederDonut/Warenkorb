@@ -9,7 +9,7 @@ public class Register {
     public Register(Map<String, Warenkorb> register) {
         this.register = register;
     }
-    public static Register erstelleRegister(String Name, Warenkorb warenkorb) {
+    public static Register erstelleRegister(String name, Warenkorb warenkorb) {
         Map<String, Warenkorb> Register = new HashMap<>();
         return new Register(Register);
     }
@@ -34,13 +34,13 @@ public class Register {
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     // Zugriff auf EIN Warenkorbobjekt in der Hashmap
-    public void addArtikelZuWarenkorb(String Name, Artikel artikel) {
+    public void addArtikelZuWarenkorb(String name, Artikel artikel) {
         // warenkorb = lokale Variable dieser Methode
-        Warenkorb warenkorb = getWarenkorb(Name); // Zugriff auf den Warenkorb in der Map
+        Warenkorb warenkorb = getWarenkorb(name); // Zugriff auf den Warenkorb in der Map
         if (warenkorb != null) {
             warenkorb.addArtikel(artikel); // Fügt den Artikel hinzu
             System.out.println("_________________________________________________");
-            System.out.println("Artikel wurde in "+Name+"'s Warenkorb hinzugefügt");
+            System.out.println("Artikel wurde in "+name+"'s Warenkorb hinzugefügt");
             System.out.println("_________________________________________________");
         } else {
             System.out.println("_________________________________________");
@@ -50,8 +50,8 @@ public class Register {
         }
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    public void  removeArtikelZuWarenkorb(String Name, int artikelNr) {
-        Warenkorb warenkorb = getWarenkorb(Name);
+    public void  removeArtikelZuWarenkorb(String name, int artikelNr) {
+        Warenkorb warenkorb = getWarenkorb(name);
         if (warenkorb != null) {
             warenkorb.removeArtikel(artikelNr);
         } else {
@@ -61,8 +61,8 @@ public class Register {
         }
     }
     /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    public void showArtikelZuWarenkorb(String Name){
-        Warenkorb warenkorb = getWarenkorb(Name);
+    public void showArtikelZuWarenkorb(String name){
+        Warenkorb warenkorb = getWarenkorb(name);
         if (warenkorb != null){
             warenkorb.showWarenkorb();
             warenkorb.countArtikel();
@@ -87,7 +87,7 @@ public class Register {
     }
     /*++++++++++++++++++++++++++++++++++++++++++MK000++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     //funktioniert
-    public void zurkasse(){
+    public void zurKasse(){
         // Gib die Namen der Map aus
         for (String Name : register.keySet()) {
 

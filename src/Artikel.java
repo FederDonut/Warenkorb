@@ -3,47 +3,46 @@ import java.util.Scanner;
 public class Artikel {
 
     // Eigenschaften
-    private String Beschreibung;
-    private int ArtikelNr;
-    private double Brutto;
-    private double Steuer =  0.19; // Steuersatz ist eine Konstante
+    private String beschreibung;
+    private int artikelNr;
+    private double brutto;
 
-    //Konstruktor
-    public Artikel(String Beschreibung, double Brutto, int ArtikelNr){
-        this.Beschreibung = Beschreibung;
-        this.ArtikelNr = ArtikelNr;
-        this.Brutto = Brutto;
+      //Konstruktor
+    public Artikel(String beschreibung, double brutto, int artikelNr){
+        this.beschreibung = beschreibung;
+        this.artikelNr = artikelNr;
+        this.brutto = brutto;
     }
     // Getter Methode um Werte auszugeben
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
 
     public double getBrutto() {
-        return Brutto;
+        return brutto;
     }
 
     public int getArtikelNr() {
-        return ArtikelNr;
+        return artikelNr;
     }
 
 
 
     //Methoden
 
-    // Neuen Artikel anlegen
+    // Neuen Artikel anlegen |Factory Methode
     public static Artikel neuArtickel(){
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Artikel Beschreibung: ");
-        String Beschreibung = scan.nextLine();
+        String beschreibung = scan.nextLine();
         System.out.println("ArtikelNr:  (Nur Ganzzahlen)");
-        int ArtikelNr = scan.nextInt();
+        int artikelNr = scan.nextInt();
         System.out.println("Brutto:   €");
-        double Brutto = scan.nextDouble();
+        double brutto = scan.nextDouble();
 
-        return new Artikel(Beschreibung,Brutto, ArtikelNr);
+        return new Artikel(beschreibung,brutto, artikelNr);
 
     }
 

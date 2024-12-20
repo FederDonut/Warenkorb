@@ -7,10 +7,15 @@ public class testmain2 {
     public static void main(String[] args) {
 
 
-        String Name;// Muss evtl. in einer anderen Klasse dkleariert werden
+        String name;// Muss evtl. in einer anderen Klasse dkleariert werden
         // while Scleifen Variablen
-        int Steuerung = 0, Kundenmenu = 0, Adminmenu = 0; //gastkonto = 0;//
-        boolean on = true, adminmenu = true, menu = true; // Whileschleifen für die einzelen Menü-Logikender Steuerungslogik
+        /*
+        * folgende Integer Variablen dienen der Menüsteuerung in den folgenden Switch Case Statements
+        * und werden aus Übersichtsgründen Großgeschrieben
+        */
+        int Steuerung = 0, Kundenmenu = 0, Adminmenu = 0; //
+        // Whileschleifen für die einzelen Menü-Logikender Steuerungslogik
+        boolean adminmenu = true, kundenmenu = true;
 
 
 
@@ -22,10 +27,15 @@ public class testmain2 {
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
         // Loginmenü Programmstart
         /************************************Artikel Sortiment wird instanziiert***************************** */
-        while (on) {
+        // on = Initialvariable == Startet das ganze Programm (Vergleichbar mit einem Lichtschalter on/off)
+        /*
+        * Mich beschleicht der Verdacht, dass die Zeile 34 while(on) überflüssig ist
+        * 20.12.2024 Verdacht bestätigt !!
+        * */
+
             System.out.println("Herzlich Willkommen in deinem Lebensmittel Online Shop\nName:  ");
-            Name = input.nextLine();
-            if (Name.equals("ShopAdmin")) {
+            name = input.nextLine();
+            if (name.equals("ShopAdmin")) {
                 Steuerung = 1;
             } else {
                 Steuerung = 2;
@@ -102,22 +112,28 @@ public class testmain2 {
 
                 case 2: //Shopmenü
 
-                    if (Name.equals("ShopAdmin")) {
+                    if (name.equals("ShopAdmin")) {
                         Scanner scan =new Scanner(System.in);
                         System.out.println("Herzlich Willkommen in deinem Lebensmittel Online Shop\nName:  ");
-                        Name = scan.nextLine();
+                        name = scan.nextLine();
                     }
 
-                    System.out.println("Hallo " + Name + " wir haben heute tolle Produkte in unserem Angebot für dich.");
-                    Warenkorb warenkorb = Warenkorb.erstelleWarenkorb(Name);
-                    Register register = Register.erstelleRegister(Name, warenkorb);
-                    register.addKunde(Name, warenkorb);
+                    System.out.println("Hallo " + name + " wir haben heute tolle Produkte in unserem Angebot für dich.");
+                    Warenkorb warenkorb = Warenkorb.erstelleWarenkorb(name);
+                    Register register = Register.erstelleRegister(name, warenkorb);
+                    register.addKunde(name, warenkorb);
 
                     System.out.println("Das Tagesangebot ");
                     Sortiment.showAngebot();
                     /*++++++++++++++++++++++++++++++++++++++++++++++++Einkaufsmenü+++++++++++++++++++++++++++++++++++++++*/
-                    while (menu) {
+                    while (kundenmenu) {
                         switch (Kundenmenu) {
+                            /*
+                            * Variablen und Methoden innerhalb eines Cases werden mit der entsprechenden CaseNr.
+                            * gekennzeichnet
+                            * Bsp: Cas0 --> String name0 ; Scanner = temp0, Case1--> String name1 Scanner = temp1; usw.
+                            * */
+
                             /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                             case 0: //Hauptmenü
                                 System.out.println("________________Hauptmenü_________________\n");
@@ -131,7 +147,7 @@ public class testmain2 {
                                 Kundenmenu = input.nextInt();
                                 break;
                             /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-                            case 1: // Implementiert eine Suchfunktion Anhand eines Indexes
+                            case 1: // Implementiert eine Suchfunktion anhand eines Indexes
                                 Scanner temp = new Scanner(System.in);
                                 System.out.println("Artikel hinzufügen");
                                 System.out.println("___________________");
@@ -141,13 +157,12 @@ public class testmain2 {
                                     Sortiment.findArtikel(index);
                                     // Zugriff auf die einzelnen Warenkörbe
                                     System.out.println("In welchen Warenkorb soll der Artikel hinzugefügt werden ?\nKunden-Name: ");
-                                    String name = temp.nextLine();
-                                    register.addArtikelZuWarenkorb(name, Sortiment.findArtikel(index));
+                                    String name1 = temp.nextLine();
+                                    register.addArtikelZuWarenkorb(name1, Sortiment.findArtikel(index));
                                 }catch(InputMismatchException exception) {
 
                                     System.out.println("___________________________________________");
                                     System.out.println("Falscher Wert: Nur Ganzzahlen erlaubt (Int)");
-
                                     System.out.println("___________________________________________");
                                 }
 
@@ -235,17 +250,15 @@ public class testmain2 {
                             /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                             case 7:
                                 System.out.println("Zur Kasse = Ende");
-                                register.zurkasse();
+                                register.zurKasse();
                                 System.out.println("Auf Wiedersehen");
-                                menu = false;
-                                on = false;
+                                kundenmenu = false;
                                 break;
-                                // Gesamtpreis wird nicht berechnet !!!!! Auflistung funktioniert soweit
-                            // Gesamtanzahl wird angezeigt
 
                             default:
                                 System.out.println("Ungültige eingabe. ");
                                 Kundenmenu = 0;
+
                                 break;
 
                         }
@@ -253,8 +266,9 @@ public class testmain2 {
 
 
             }
-            break;
-        }
-        System.exit(0);
+
+
     }
+
 }
+

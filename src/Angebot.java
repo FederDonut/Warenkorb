@@ -8,31 +8,31 @@ public class Angebot {
     // Ein Objekt dieser Klasse wird z.B. wöchentlich neu instanziert
 
     //Angebotsliste wöchentlich
-    private ArrayList<Artikel> Artikelliste = new ArrayList<>();
+    private ArrayList<Artikel> artikelliste = new ArrayList<>();
 
-    //Konstruktor Artikel hinzufügen
+    //Konstruktor Artikel hinzufügen = repräsentiert ein Standartsortiment welches immer zur Verfügung steht
     public Angebot() {
-        Artikelliste.add(new Artikel("Brot", 2.2, 10));
-        Artikelliste.add(new Artikel("Hähnchen", 4.49, 20));
-        Artikelliste.add(new Artikel("Nussmix", 2.99, 30));
-        Artikelliste.add(new Artikel("Bohnen", 1.99, 50));
-        Artikelliste.add(new Artikel("H-Milch 3,5 %", 0.99, 40));
+        artikelliste.add(new Artikel("Brot", 2.2, 10));
+        artikelliste.add(new Artikel("Hähnchen", 4.49, 20));
+        artikelliste.add(new Artikel("Nussmix", 2.99, 30));
+        artikelliste.add(new Artikel("Bohnen", 1.99, 50));
+        artikelliste.add(new Artikel("H-Milch 3,5 %", 0.99, 40));
     }
 
     public void addArtikel(Artikel artikel) {
-        Artikelliste.add(artikel);
+        artikelliste.add(artikel);
     }
 
     //!!!!!!!!Funktionsfähig !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void removeArtikel(int artikelNr) {
         Scanner remove = new Scanner(System.in);
-        for(int i  =0; i <Artikelliste.size(); i++){
-            if(Artikelliste.get(i).getArtikelNr()==artikelNr){
-                 System.out.println("Artikel gefunden "+ Artikelliste.get(i).getBeschreibung() );
+        for(int i  =0; i <artikelliste.size(); i++){
+            if(artikelliste.get(i).getArtikelNr()==artikelNr){
+                 System.out.println("Artikel gefunden "+ artikelliste.get(i).getBeschreibung() );
                 System.out.println("Artikel endgültig löschen ? 1 (ja)");
                 int choose = remove.nextInt();
                 if(choose == 1){
-                    Artikelliste.remove(i);
+                    artikelliste.remove(i);
                     System.out.println("Artikel gelöscht ");
                     return; // Um die Methode zu beenden und keinen Fehler zu verursachen
                 }else{
@@ -45,9 +45,9 @@ public class Angebot {
 
     // Noch nicht tauglich für das Gesamtangebot
     public void showAngebot() {
-        for (Artikel artikel : Artikelliste) {
+        for (Artikel artikel : artikelliste) {
             System.out.println("-----------------------------------------");
-            System.out.println("Index: " + Artikelliste.indexOf(artikel)); // Notwendig zur Löschung
+            System.out.println("Index: " + artikelliste.indexOf(artikel)); // Notwendig zur Löschung
             System.out.println("Artikel: " + artikel.getBeschreibung());
             System.out.println("Artikelnummer: " + artikel.getArtikelNr());
             System.out.println("Bruttopreis: " + artikel.getBrutto() + " €");
@@ -57,16 +57,16 @@ public class Angebot {
     }
 
     public Artikel findArtikel(int index){
-        for(int i =0; i<Artikelliste.size();i++){
+        for(int i =0; i<artikelliste.size();i++){
             if(i == index){
-                Artikel artikel = Artikelliste.get(i);
+                Artikel artikel = artikelliste.get(i);
                 System.out.println("____________________________________________");
                 System.out.println("Beschreibung: "+artikel.getBeschreibung());
                 System.out.println("ArtikelNr: "+artikel.getArtikelNr());
                 System.out.println("BruttoPreis: "+artikel.getBrutto()+"€");
                 System.out.println("__________________________________________");
 
-                return Artikelliste.get(i);
+                return artikelliste.get(i);
             }
         }
         return null; //Artikel nicht gefunden
