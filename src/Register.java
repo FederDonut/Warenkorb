@@ -1,22 +1,22 @@
-import javax.lang.model.element.Name;
+
 import java.util.*;
 
 public class Register {
 
     //private String Name;
-    private Map<String, Warenkorb> register; // String (Key) = Name
+    private final Map<String, Warenkorb> register; // String (Key) = Name
 
     public Register(Map<String, Warenkorb> register) {
         this.register = register;
     }
     public static Register erstelleRegister(String name, Warenkorb warenkorb) {
-        Map<String, Warenkorb> Register = new HashMap<>();
+        Map<String , Warenkorb> Register = new HashMap<>();
         return new Register(Register);
     }
 
 
-    public void addKunde(String Name, Warenkorb warenkorb) {
-        register.put(Name, warenkorb); //PutMethode greift auf den KEY
+    public void addKunde(String name, Warenkorb warenkorb) {
+        register.put(name, warenkorb); //PutMethode greift auf den KEY
     }
 
 
@@ -27,7 +27,7 @@ public class Register {
     // Zugriff über den Namen auf das Warenkorbobjekt in der Hashmap
     // !! Achtung der Zugriff auf die Warenkorbklasse und deren Instanzen
     // wird, wenn dieser Architekturstil weiterverfolgt wird
-    // außschließlich über die Register Klasse erfolgen
+    // ausschließlich über die Register Klasse erfolgen
 
     public Warenkorb getWarenkorb(String name) {
         return register.get(name);

@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 public class Warenkorb {
 
-    ;
-    private ArrayList<Artikel> artikelListe;
-    private String kunde;
+
+    private final ArrayList<Artikel> artikelListe;
+    private final String kunde;
 
     public Warenkorb(String kunde, ArrayList<Artikel> artikelListe) {
         this.kunde = kunde;
@@ -17,20 +17,13 @@ public class Warenkorb {
     /*++++++++++++++++++++++++++++++++++++++++++MK-000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public static Warenkorb erstelleWarenkorb(String kunde) {
         ArrayList<Artikel> artikelListe = new ArrayList<>();
-        Warenkorb warenkorb = new Warenkorb(kunde, artikelListe);
 
-        return warenkorb;
+        return new Warenkorb(kunde, artikelListe);
     }
 
 
     /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    public String getKunde() {
-        return kunde;
-    }
-    /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    public ArrayList<Artikel> getArtikelListe() {
-        return artikelListe;
-    }
+
     /*++++++++++++++++++++++++++++++++++++++++++MK-000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public void addArtikel(Artikel artikel) {
         //System.out.println("Artikel hinzufügen ? 1(Ja)");
@@ -92,7 +85,6 @@ public class Warenkorb {
     public void countArtikel(){ //Testfunktioniert
 
          if(artikelListe.isEmpty()){
-            //System.out.println(getArtikelListe()); // Methode wird theoretisch nicht benötigt
             System.out.println(artikelListe.size()+" Es befinden sich keine Artikel in "+kunde+" Warenkorb");
         }else{
             System.out.println( artikelListe.size()+" Artikel befindet sich in "+kunde+"s Warenkorb");

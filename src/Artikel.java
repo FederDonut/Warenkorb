@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Artikel {
 
     // Eigenschaften
+    /*++++++++++++++++++++++++++++++++++++++MK-010++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     private String beschreibung;
     private int artikelNr;
     private double brutto;
@@ -13,26 +14,33 @@ public class Artikel {
         this.artikelNr = artikelNr;
         this.brutto = brutto;
     }
-    // Getter Methode um Werte auszugeben
-
+    // MK-030 Getter Methode um Werte auszugeben
     public String getBeschreibung() {
         return beschreibung;
     }
-
     public double getBrutto() {
         return brutto;
     }
-
     public int getArtikelNr() {
         return artikelNr;
     }
+    // Setter Methoden um einzelne Attribute zu ändern
+    public void setBeschreibung(String neueBeschreibung){
+        this.beschreibung=neueBeschreibung;
 
+    }
+    public void setArtikelNr(int neueArtikelNr){
+        this.artikelNr=neueArtikelNr;
+    }
+    public void setBrutto(double neuBrutto){
+        this.brutto=neuBrutto;
+    }
 
 
     //Methoden
 
-    // Neuen Artikel anlegen |Factory Methode
-    public static Artikel neuArtickel(){
+    // MK-020 Neuen Artikel anlegen |Factory Methode
+    public static Artikel neuArtikel(){
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Artikel Beschreibung: ");
