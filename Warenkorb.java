@@ -10,10 +10,7 @@ public class Warenkorb {
     public Warenkorb(String kunde, ArrayList<Artikel> artikelListe) {
         this.kunde = kunde;
         this.artikelListe = artikelListe;
-
-
     }
-
     /*++++++++++++++++++++++++++++++++++++++++++MK-000+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public static Warenkorb erstelleWarenkorb(String kunde) {
         ArrayList<Artikel> artikelListe = new ArrayList<>();
@@ -21,8 +18,6 @@ public class Warenkorb {
 
         return warenkorb;
     }
-
-
     /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     public String getKunde() {
         return kunde;
