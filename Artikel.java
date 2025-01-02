@@ -27,10 +27,7 @@ public class Artikel {
         return artikelNr;
     }
 
-
-
     //Methoden
-
     // Neuen Artikel anlegen |Factory Methode
     public static Artikel neuArtickel(){
         Scanner scan = new Scanner(System.in);
@@ -43,8 +40,5 @@ public class Artikel {
         double brutto = scan.nextDouble();
 
         return new Artikel(beschreibung,brutto, artikelNr);
-
     }
-
-
 }
