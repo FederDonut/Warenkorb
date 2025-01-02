@@ -37,7 +37,7 @@ public class testmain2 {
             }
             //Info:  Steuerung = 0
             switch (Steuerung) {
-
+        /*****************************************************************************************************/
                 case 1: //  Adminmenü --> Angebots/Sortimentmanagement
                     while (adminmenu) {
                         switch (Adminmenu) {
