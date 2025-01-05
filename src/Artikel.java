@@ -7,7 +7,7 @@ public class Artikel {
     private String beschreibung;
     private int artikelNr;
     private double brutto;
-
+    /*+++++++++++++++++++++++++++++++++++++++MK-050+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
       //Konstruktor
     public Artikel(String beschreibung, double brutto, int artikelNr){
         this.beschreibung = beschreibung;
@@ -38,8 +38,8 @@ public class Artikel {
 
 
     //Methoden
-
-    // MK-020 Neuen Artikel anlegen |Factory Methode
+    /*++++++++++++++++++++++++++++++++MK-020++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    //Neuen Artikel anlegen |Factory Methode
     public static Artikel neuArtikel(){
         Scanner scan = new Scanner(System.in);
 

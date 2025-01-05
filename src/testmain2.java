@@ -16,9 +16,6 @@ public class testmain2 {
          int Steuerung, Kundenmenu = 0, Adminmenu = 0; //
         // Whileschleifen für die einzelnen Menü-Logiken der Steuerungslogik
         boolean adminmenu = true, kundenmenu = true;
-
-
-
         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
         Scanner input = new Scanner(System.in); // Benutzereingabe --> Menüführung in der switch case logic
         Scanner kunde = new Scanner(System.in); // Menüführung
@@ -40,20 +37,29 @@ public class testmain2 {
             case 1: //  Adminmenü --> Angebots/Sortiment management
                 while (adminmenu) {
                     switch (Adminmenu) {
+                        /*++++++++++++++++++++++++++MK-800+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                         case 0: //:::::Adminmenü::::::
                             System.out.println();
                             System.out.println(" Admin_Modus_erhöhte_Berechtigung");
                             System.out.println("----------------------------------");
-                            System.out.println("-Neuen Artikel anlegen (1)\n-Gesamtes Angebot anzeigen (2)\n-Bestehenden Artikel löschen (3)\n-Artikel ändern (4)\n-Abmelden (9)");
+                            System.out.println("-Neuen Artikel anlegen ?  (1)");
+                            System.out.println("Angebot anzeigen (2)");
+                            System.out.println("-Bestehenden Artikel löschen (3)");
+                            System.out.println("-Artikel ändern (4)");
+                            System.out.println("-Abmelden (9)");
+                            System.out.println("-Zurück (0)");
                             Adminmenu = input.nextInt();
                             break;
+                        /*++++++++++++++++++++++++++MK-021+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                         case 1: // ::::Artikel Anlegen:::::::
                             int Navigation; //Steuerungsfunktion innerhalb dieser Admin-Logik
                             Artikel artikel = Artikel.neuArtikel();
                             // Hier wird die getätigte Eingabe ausgegeben
                             System.out.println("Artikelangaben: ");
                             System.out.println("-----------------");
-                            System.out.println("Beschreibung: " + artikel.getBeschreibung() + "\nArtikelNr: " + artikel.getArtikelNr() + "\nBrutto: " + artikel.getBrutto() + " €");
+                            System.out.println("Beschreibung: " + artikel.getBeschreibung() +
+                                    "\nArtikelNr: " + artikel.getArtikelNr() + "" +
+                                    "\nBrutto: " + artikel.getBrutto() + " €");
                             System.out.println("Angaben bestätigen ?    ja(1)");
                             Navigation = input.nextInt();
                             if (Navigation == 1) {
@@ -62,18 +68,27 @@ public class testmain2 {
                             } else {
                                 System.out.println("Artikel verworfen ");
                             }
-                            System.out.println("-Neuen Artikel anlegen ?  (1)\n-Gesamtes Angebot anzeigen (2)\n -Bestehenden Artikel löschen (3)\n-Abmelden (9)\n-Zurück (0) ?");
+                            System.out.println("-Neuen Artikel anlegen ?  (1)");
+                            System.out.println("Angebot anzeigen (2)");
+                            System.out.println("-Bestehenden Artikel löschen (3)");
+                            System.out.println("-Artikel ändern (4)");
+                            System.out.println("-Abmelden (9)");
+                            System.out.println(" -Zurück (0)");
                             Adminmenu = input.nextInt();
                             break;
-
+                        /*++++++++++++++++++++++++++MK-024+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                         case 2://::::::::Gesamtes Angebot anzeigen::::::::
                             Sortiment.showAngebot();
-                            System.out.println("-Neuen Artikel anlegen ?  (1)\n-Gesamtes Angebot anzeigen (2)\n -Bestehenden Artikel löschen (3)\n-Artikel ändern(4)\n-Abmelden (9)\n-Zurück (0) ?");
+                            System.out.println("-Neuen Artikel anlegen ?  (1)");
+                            System.out.println("Angebot anzeigen (2)");
+                            System.out.println("-Bestehenden Artikel löschen (3)");
+                            System.out.println("-Artikel ändern (4)");
+                            System.out.println("-Abmelden (9)");
+                            System.out.println(" -Zurück (0)");
                             Adminmenu = input.nextInt();
                             break;
-
-
-                        case 3://::::Artikel löschen MK-022::::::
+                        /*++++++++++++++++++++++++++MK-022+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                        case 3://::::Artikel löschen::::::
                             Scanner delete = new Scanner(System.in);
                             System.out.println("Artikel löschen\n" + "----------------------------------");
                             Sortiment.showAngebot();
@@ -83,10 +98,16 @@ public class testmain2 {
                             Sortiment.removeArtikel(artikelNr);
                             //::::Kontrolle::::
                             System.out.println("Artikel gelöscht");
-                            System.out.println("-Neuen Artikel anlegen ?  (1)\n-Gesamtes Angebot anzeigen (2)\n -Bestehenden Artikel löschen (3)\n-Artikel ändern (4)\n-Abmelden (9)\n-Zurück (0) ?");
+                            System.out.println("-Neuen Artikel anlegen ?  (1)");
+                            System.out.println("Angebot anzeigen (2)");
+                            System.out.println("-Bestehenden Artikel löschen (3)");
+                            System.out.println("-Artikel ändern (4)");
+                            System.out.println("-Abmelden (9)");
+                            System.out.println(" -Zurück (0)");
                             Adminmenu = input.nextInt();
                             break;
-                        case 4://Artikel ändern MK-023
+                        /*++++++++++++++++++++++++++MK-023+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                        case 4://::::Artikel ändern::::
                             Scanner change= new Scanner(System.in);
                             System.out.println("Artikel anpassen\n_______________________________________");
                             Sortiment.showAngebot();
@@ -98,8 +119,6 @@ public class testmain2 {
                             System.out.println("Zurück zum Admin-Menü");
                             Adminmenu=0;
                             break;
-
-
                         case 9:
                             System.out.println("Admin wurde abgemeldet");
                             adminmenu = false;
@@ -124,7 +143,7 @@ public class testmain2 {
                 register.addKunde(name, warenkorb);
                 System.out.println("Das Tagesangebot ");
                 Sortiment.showAngebot();
-                /*++++++++++++++++++++++++++++++++++++++++++++++++Einkaufsmenü++++++++++++++++++++++++++++++++++++*/
+                /*++++++++++++++++++++++++++++++++++++++++++++++++MK-000++++++++++++++++++++++++++++++++++++*/
                 while (kundenmenu) {
                     switch (Kundenmenu) {
                         /*
@@ -135,7 +154,7 @@ public class testmain2 {
 
                         /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                         case 0: //Hauptmenü
-                            System.out.println("________________Hauptmenü_________________\n");
+                            System.out.println("________________>Hauptmenü<_________________");
                             System.out.println("Artikel dem Warenkorb hinzufügen (1)");
                             System.out.println("Artikel aus dem Warenkorb entfernen (2)");
                             System.out.println("Angebot anzeigen (3)");//erledigt
@@ -143,57 +162,68 @@ public class testmain2 {
                             System.out.println("Gesamtpreis Netto berechnen (5)");
                             System.out.println("Weiteren Gast-Warenkorb einrichten  (6)");
                             System.out.println("Zur Kasse (7)");
+                            System.out.println("____________________________________________");
                             Kundenmenu = input.nextInt();
                             break;
-                        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                        /*+++++++++++++++++++++++++MK-200+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                         case 1: // Implementiert eine Suchfunktion anhand eines Indexes
                             Scanner temp = new Scanner(System.in);
                             System.out.println("Artikel hinzufügen");
-                            System.out.println("___________________");
-                            System.out.println("Index ");
+                            System.out.println("Gib den Index des gesuchten Artikel an");
+                            System.out.println("Index: ");
+                            Integer index;
                             try { // FehlerKontrolle
-                                int index = kunde.nextInt();
-                                Sortiment.findArtikel(index);
+                                index = kunde.nextInt();
+                                Artikel artikel = Sortiment.findArtikel(index);//Suchfunktion
                                 // Zugriff auf die einzelnen Warenkörbe
-                                System.out.println("In welchen Warenkorb soll der Artikel hinzugefügt werden ?\nKunden-Name: ");
-                                String name1 = temp.nextLine();
-                                register.addArtikelZuWarenkorb(name1, Sortiment.findArtikel(index));
+                                if( artikel == null ){
+                                    System.out.println("Artikel nicht gefunden, zurück zum Hauptmenü");
+                                    Kundenmenu=0;
+                                }else{
+                                    System.out.println("In welchen Warenkorb soll der Artikel hinzugefügt werden ?\nKunden-Name: ");
+                                    String name1 = temp.nextLine();
+                                    register.addArtikelZuWarenkorb(name1, Sortiment.findArtikel(index));
+                                    //Untere Methode würde funktionieren
+                                    //register.addArtikelZuWarenkorb(name1, artikel);
+                                }
                             } catch (InputMismatchException exception) {
-
                                 System.out.println("___________________________________________");
                                 System.out.println("Falscher Wert: Nur Ganzzahlen erlaubt (Int)");
+                                System.out.println("Du musst das Programm neustarten Fehler wird noch behoben");//LogicFehlerID:1
                                 System.out.println("___________________________________________");
                             }
-
-                            System.out.println("Weitere Artikel hinzufügen ja (1)");
-                            System.out.println("Artikel aus dem Warenkorb entfernen (2)");
-                            System.out.println("Warenkorb anzeigen (4)");
+                            //Theoretisch können hier anderer Menüstrukturen ausgewählt werden
                             System.out.println("Hauptmenü (0)");
-
                             Kundenmenu = input.nextInt();
                             break;
-                        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                        /*++++++++++++++++++++++++++MK-300+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                         case 2: // Artikel aus dem Warenkorb entfernen
 
                             System.out.println("Artikel entfernen");
                             System.out.println("Auf welchen Warenkorb soll zugegriffen werden ?\nKunden-Name: ");
                             Scanner temp2 = new Scanner(System.in);
-                            String name2 = temp2.nextLine(); // Variablen Überladung ?
-                            register.showArtikelZuWarenkorb(name2);
-                            try {
+                            try{
+
+                                String name2 = temp2.nextLine(); // Variablen Überladung ?
+                                register.showArtikelZuWarenkorb(name2);
+                                //try{
+                                // Muss angepasst werden <-----
+                               //if(){
+
+                               //}
                                 System.out.println("Welcher Artikel soll entfernt werden ?\nGib die ArtikelNr an");
-                                int artikelNr = kunde.nextInt();
+                                int artikelNr = temp2.nextInt();
                                 register.removeArtikelZuWarenkorb(name2, artikelNr);
                             } catch (InputMismatchException exception) {
                                 System.out.println("____________________________________________");
-                                System.out.println("Falscher Wert: Nur Ganzzahlen erlaubt (Int)");
+                                System.out.println("Falscher Wert: Nur Ganzzahlen erlaubt (Int)");//LogicFehlerID:1
                                 System.out.println("___________________________________________");
                             }
                             System.out.println("Hauptmenü (0)");
                             Kundenmenu = input.nextInt();
                             break;
-                        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-                        case 3: // Funktioniert
+                        /*++++++++++++++++++++++++++++++++MK-600++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                        case 3: // Ausgabe des Angebots/Sortiment
                             System.out.println("Angebot ");
                             Sortiment.showAngebot();
                             System.out.println("Artikel dem Warenkorb hinzufügen (1)");
@@ -202,7 +232,7 @@ public class testmain2 {
 
                             Kundenmenu = input.nextInt();
                             break;
-                        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                        /*+++++++++++++++++++++++++++MK-400++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                         case 4:// funktioniert
                             System.out.println("Warenkorbanzeigen");
                             System.out.println("Welcher Warenkorb soll angezeigt werden ?\nKunden-Name: ");
@@ -227,8 +257,8 @@ public class testmain2 {
                             Kundenmenu = input.nextInt();
                             break;
 
-                        /*+++++++++++++++++++++++++++++Gastwarenkorb++++++++MK000+++++++++++++++++++++++++++++++++*/
-                        case 6: // Funktioniert
+                        /*++++++++++++++++++++++++++MK-100+++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                        case 6: // Gastwarenkorb
                             System.out.println("Neuer Warenkorb");
                             System.out.println("_____________________");
                             System.out.println("Gastname:");
@@ -243,7 +273,7 @@ public class testmain2 {
                             System.out.println("Hauptmenü (0)");
                             Kundenmenu = input.nextInt();
                             break;
-                        /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+                        /*+++++++++++++++++++++++++++MK-900+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
                         case 7: //funktioniert
                             System.out.println("Zur Kasse = Ende");
                             register.zurKasse();

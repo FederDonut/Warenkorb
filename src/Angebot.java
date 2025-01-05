@@ -5,10 +5,12 @@ public class Angebot {
 
     // Diese Klasse enthält Waren, welche vom Kunden ausgewählt und in den Warenkorb gelegt werden können
     // Ein Objekt dieser Klasse wird z.B. wöchentlich neu instanziiert
+    // Ausschließlich der ShopAdmin soll auf Methoden dieser Klass zugreifen können.
 
     //MK-021 Angebotsliste
+    /*+++++++++++++++++++++++++++++++++MK-021++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     private final ArrayList<Artikel> artikelliste = new ArrayList<>();
-
+    /*+++++++++++++++++++++++++++++++++MK-026++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
     //Konstruktor Artikel hinzufügen = repräsentiert ein Standartsortiment welches immer zur Verfügung steht
     public Angebot() {
         artikelliste.add(new Artikel("Brot", 2.2, 10));
@@ -17,11 +19,13 @@ public class Angebot {
         artikelliste.add(new Artikel("Bohnen", 1.99, 50));
         artikelliste.add(new Artikel("H-Milch 3,5 %", 0.99, 40));
     }
-    // MK-021 Artikel-Objekte zur Liste hinzufügen
+    /*+++++++++++++++++++++++++++++++++++++++MK-027++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    // Artikel-Objekte zur Liste hinzufügen
     public void addArtikel(Artikel artikel) {
         artikelliste.add(artikel);
     }
-    //MK-022 Artikel-Objekte löschen
+    /*+++++++++++++++++++++++++++++++++++++++MK-022++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    //Artikel löschen
     public void removeArtikel(int artikelNr) {
         Scanner remove = new Scanner(System.in);
         for(int i  =0; i <artikelliste.size(); i++){
@@ -39,7 +43,8 @@ public class Angebot {
             }
         }
     }
-    // MK-024 Ausgeben der Artikel-Objekte
+    /*+++++++++++++++++++++++++++++++++++++++MK-024++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    //Ausgeben der Artikel-Objekte
     public void showAngebot() {
         for (Artikel artikel : artikelliste) {
             System.out.println("-----------------------------------------");
@@ -50,7 +55,8 @@ public class Angebot {
             System.out.println("-----------------------------------------");
         }
     }
-    //MK-025 Artikel-Suchfunktion
+    /*+++++++++++++++++++++++++++++++++++++++MK-025++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    // Artikel-Suchfunktion
     public Artikel findArtikel(int index){
         for(int i =0; i<artikelliste.size();i++) {
             if (i == index) {
@@ -60,13 +66,12 @@ public class Angebot {
                     System.out.println("ArtikelNr: " + artikel.getArtikelNr());
                     System.out.println("Brutto: " + artikel.getBrutto() + "€");
                     System.out.println("__________________________________________");
-                return artikelliste.get(i);
+                    return artikelliste.get(i);
             }
-        }
-        System.out.println("Artikel nicht gefunden");
-        return null; //Artikel nicht gefunden
+        }return null;
     }
-    //MK-023 Artikel-Objekte nachträglich ändern (Attribute anpassen)
+    /*+++++++++++++++++++++++++++++++++++++++MK-023++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    //Artikel-Objekte nachträglich ändern (Attribute anpassen)
     public void  changeArtikel(int index) {
         Scanner temp1 = new Scanner(System.in);
         boolean on = true;
